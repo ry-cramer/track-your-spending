@@ -1,7 +1,15 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import generics
+from . import models, serializers
 
-# Create your views here.
+class TransactionHistoryView(generics.CreateAPIView):
+    queryset = models.TransactionHistory.objects.all()
+    serializer_class = serializers.TransactionHistorySerializer
 
-def main(request):
-    return HttpResponse('<h1>Hello World!<h1>')
+class TransactionsView(generics.CreateAPIView):
+    queryset = models.Transactions.objects.all()
+    serializer_class = serializers.TransactionsSerializer
+
+class SubscriptionsView(generics.CreateAPIView):
+    queryset = models.Subscriptions.objects.all()
+    serializer_class = serializers.SubscriptionsSerializer
