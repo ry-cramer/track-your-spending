@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import HomePage from "./HomePage";
+import CreateTransactionPage from "./CreateTransactionPage";
+import { BrowserRouter as Router, Routes, Route, Link, Redirect} from "react-router-dom";
 
 export default class App extends Component {
   constructor(props) {
@@ -8,7 +11,14 @@ export default class App extends Component {
 
   render() {
     return (
-        <h1>Testing App Page</h1>
+        <div>
+            <Router>
+                <Routes>
+                    <Route path='/' element={<HomePage />} />
+                    <Route path='/create' element={<CreateTransactionPage />} />
+                </Routes>
+            </Router>
+        </div>
     );
   }
 }
